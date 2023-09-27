@@ -16,7 +16,9 @@ const Slides = ({ item }) => {
 
   const navigation = useNavigation();
 
-  const onPress = () => {};
+  const onPress = () => {
+    navigation.navigate("Bottom");
+  };
 
   return (
     <View>
