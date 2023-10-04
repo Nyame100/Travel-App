@@ -1,5 +1,4 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { Chat, Home, Location, Profile } from "../screens";
 import { Ionicons } from "@expo/vector-icons";
@@ -99,5 +98,3 @@ const BottomTabNavigation = () => {
 };
 
 export default BottomTabNavigation;
-
-const styles = StyleSheet.create({});
