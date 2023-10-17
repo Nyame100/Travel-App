@@ -23,7 +23,7 @@ const ReusableTile = ({ item, onPress }) => {
           <ReusableText
             text={title}
             family={"medium"}
-            size={SIZES.medium}
+            size={SIZES.small + 0.8}
             color={COLORS.black}
           />
 

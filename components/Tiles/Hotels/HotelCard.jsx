@@ -27,7 +27,7 @@ const HotelCard = ({ item, margin, onPress }) => {
           <ReusableText
             text={title}
             family={"medium"}
-            size={SIZES.medium}
+            size={SIZES.xSmall}
             color={COLORS.black}
           />
 
@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
     height: 260,
     borderRadius: 16,
     backgroundColor: COLORS.lightWhite,
-    margin,
+    marginRight: margin,
   }),
   imageContainer: {
     alignItems: "center",

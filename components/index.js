@@ -1,5 +1,7 @@
 import ReusableBtn from "./Buttons/ReusableBtn";
 import Places from "./Home/Places";
+import HotelMap from "./Hotel/HotelMap";
+import DescriptionText from "./Reusable/DescriptionText";
 import HeightSpacer from "./Reusable/HeightSpacer";
 import NetworkImage from "./Reusable/NetworkImage";
 import Rating from "./Reusable/Rating";
@@ -14,4 +16,6 @@ export {
   Places,
   NetworkImage,
   Rating,
+  DescriptionText,
+  HotelMap,
 };

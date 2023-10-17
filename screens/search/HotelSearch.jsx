@@ -1,14 +1,26 @@
-import { StyleSheet, Text, View } from "react-native";
-import React from "react";
-import { SafeAreaView } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  Image,
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+  FlatList,
+} from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 import reusable from "../../components/Reusable/Reusable.style";
-import { COLORS } from "../../constants/theme";
-import ReusableTile from "../../components/Reusable/ReusableTile";
+import searchContainerStyle from "./Search.style";
+import { Feather } from "@expo/vector-icons";
+import { COLORS, SIZES } from "../../constants/theme";
 import { HeightSpacer } from "../../components";
-import { FlatList } from "react-native";
+import HotelCard from "../../components/Tiles/Hotels/HotelCard";
 import AppBar from "../../components/Reusable/AppBar";
 
-const HotelList = ({ navigation }) => {
+const HotelSearch = ({ navigation }) => {
+  const [searchKey, setSearchKey] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
+
   const hotels = [
     {
       _id: "64c674d23cfa5e847bcd5430",
@@ -62,40 +74,61 @@ const HotelList = ({ navigation }) => {
     },
   ];
   return (
-    <SafeAreaView style={reusable.container}>
+    <SafeAreaView>
       <View style={{ height: 50 }}>
         <AppBar
           color={COLORS.white}
           color1={COLORS.white}
-          title={"Best Hotels"}
-          icon={"search1"}
+          title={"Find hotels"}
+          icon={"filter"}
           onPress={() => navigation.goBack()}
-          onPress1={() => navigation.navigate("HotelSearch")}
-          top={10}
-          left={0}
-          right={0}
+          onPress1={() => {}}
+          top={20}
+          left={20}
+          right={20}
         />
+      </View>
+      <View style={searchContainerStyle.searchContainer}>
+        <View style={searchContainerStyle.searchWrapper}>
+          <TextInput
+            style={searchContainerStyle.input}
+            value={searchKey}
+            onChangeText={setSearchKey}
+            placeholder="Where do you want to stay ?"
+          />
+        </View>
+        <TouchableOpacity style={searchContainerStyle.searchBtn}>
+          <Feather name="search" size={24} color={COLORS.white} />
+        </TouchableOpacity>
       </View>
 
-      <View style={{ paddingTop: 20 }}>
-        <FlatList
-          data={hotels}
-          keyExtractor={(item) => item._id}
-          renderItem={({ item }) => (
-            <View>
-              <HeightSpacer height={10} />
-              <ReusableTile
+      {hotels === 0 ? (
+        <View>
+          <HeightSpacer height={"20%"} />
+          <Image
+            source={require("../../assets/images/search.png")}
+            style={searchContainerStyle.searchImage}
+          />
+        </View>
+      ) : (
+        <View style={{ paddingLeft: 15 }}>
+          <FlatList
+            data={hotels}
+            keyExtractor={(item) => item._id}
+            numColumns={2}
+            ItemSeparatorComponent={() => <HeightSpacer height={16} />}
+            renderItem={({ item }) => (
+              <HotelCard
                 item={item}
-                onPress={() => navigation.navigate("HotelDetails", item._id)}
+                margin={10}
+                onPress={() => navigation.navigate("PlaceDetails", item._id)}
               />
-            </View>
-          )}
-        />
-      </View>
+            )}
+          />
+        </View>
+      )}
     </SafeAreaView>
   );
 };
 
-export default HotelList;
-
-const styles = StyleSheet.create({});
+export default HotelSearch;

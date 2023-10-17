@@ -8,7 +8,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const Country = ({ item }) => {
   const navigation = useNavigation();
-  const { _id, country, description, imageUrl, region } = item;
+  const { country, imageUrl } = item;
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("CountryDetails", { item })}
