@@ -1,1 +1,1 @@
-# react-native-travel-app-starter
+# react-native-travel-app
