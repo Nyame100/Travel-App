@@ -1,14 +1,26 @@
 import { StyleSheet, Text, View } from "react-native";
 import React from "react";
+import MapView, { Marker } from "react-native-maps";
 
 const Location = () => {
+  const coordinates = {
+    latitude: 52.5205,
+    longitude: 13.3896,
+    latitudeDelta: 0.01,
+    longitudeDelta: 0.01,
+    title: "EuroStars Berlin",
+  };
   return (
-    <View>
-      <Text>Location</Text>
-    </View>
+    <MapView initialRegion={coordinates} style={styles.mapStyle}>
+      <Marker coordinate={coordinates} title={coordinates.title} />
+    </MapView>
   );
 };
 
 export default Location;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  mapStyle: {
+    ...StyleSheet.absoluteFillObject,
+  },
+});
